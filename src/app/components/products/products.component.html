@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+@if (isLoading ) {
+<p>Loading</p>
+} @else {
+<div class="product-list-container">
+  @for ( product of products; track product) {
+  <mat-card class="product-card">
+    <mat-card-header>
+      <div mat-card-avatar class="product-avatar"></div>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-subtitle>SKU: {{ product.sku }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p><strong>Cost:</strong> {{ product.cost | currency }}</p>
+      <p><strong>ID:</strong> {{ product.id }}</p>
+      @if (product.profile) {
+      <div>
+        <h4>Custom Properties:</h4>
+        <ul>
+          @for ( key of objectKeys(product.profile); track key) {
+          <li>{{ key }}: {{ product.profile[key] }}</li>
+          }
+        </ul>
+      </div>
+      }
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onEditProduct(product)"
+      >
+        Edit
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="onDeleteProduct(product.id)"
+      >
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
+
+}

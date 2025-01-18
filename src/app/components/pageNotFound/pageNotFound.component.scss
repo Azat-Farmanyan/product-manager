@@ -1,3 +1,31 @@
 :host {
   display: block;
+  height: 100vh;
+}
+
+.error-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--color-background);
+}
+
+.error-icon {
+  font-size: 100px;
+  color: var(--color-error);
+}
+
+.error-message {
+  margin: 20px 0;
+  font-size: 24px;
+  color: var(--color-text-primary);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
 }
