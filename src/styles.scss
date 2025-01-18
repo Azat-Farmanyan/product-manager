@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("./null.scss");
+
+:root {
+  --color-primary: #4A90E2; // Primary color - used for buttons, links, and highlighting main elements
+  --color-secondary: #50B792; // Secondary color - used for additional accents like active elements
+  --color-background: #F5F5F5; // Background color - used for large areas like app background
+  --color-text-primary: #333333; // Primary text color - used for the main text
+  --color-text-secondary: #7D7D7D; // Secondary text color - used for less important text
+  --color-error: #E57373; // Error color - used for displaying error messages
+  --color-success: #4CAF50; // Success color - used for displaying success messages or confirmations
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--color-background);
+}
