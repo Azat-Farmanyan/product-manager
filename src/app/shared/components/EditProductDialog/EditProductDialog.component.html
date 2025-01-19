@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Edit Product</h2>
+<mat-dialog-content>
+  <form>
+    <!-- Product Name -->
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput [(ngModel)]="data.name" name="name" />
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="data.description"
+        name="description"
+      ></textarea>
+    </mat-form-field>
+
+    <!-- Cost -->
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" [(ngModel)]="data.cost" name="cost" />
+    </mat-form-field>
+
+    <!-- Profile (Custom Properties) -->
+    @if (data.profile) {
+
+    <div>
+      <h3>Custom Properties</h3>
+      @for ( key of getProfileKeys(data.profile); track key) {
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>{{ key }}</mat-label>
+          <input
+            matInput
+            [(ngModel)]="data.profile[key]"
+            [name]="'profile-' + key"
+          />
+        </mat-form-field>
+      </div>
+      }
+    </div>
+    }
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>

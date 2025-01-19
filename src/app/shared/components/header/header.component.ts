@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
-  imports: [MatButtonModule, MatToolbarModule],
+  imports: [MatButtonModule, MatToolbarModule, MatIconModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   constructor(private authService: AuthService, private router: Router) {}

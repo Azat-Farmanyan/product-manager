@@ -12,15 +12,12 @@
 }
 
 .logout-button {
-  background-color: var(--color-secondary);
-  color: white;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
-  &:hover {
-    background-color: var(--color-error);
-    color: var(--color-background);
-  }
+  background-color: var(--color-error);
+  color: var(--color-background);
+  background-color: red;
 }

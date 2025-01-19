@@ -1,0 +1,100 @@
+mat-dialog-content {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    mat-form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      label {
+        font-size: 14px;
+        color: var(--color-primary);
+      }
+
+      input,
+      textarea {
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      .mat-form-field-underline {
+        background-color: var(--color-secondary-light);
+      }
+
+      .mat-form-field-label {
+        color: var(--color-primary);
+      }
+    }
+
+    /* Profile (Custom Properties) Section */
+    .custom-properties {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--color-primary);
+        margin-bottom: 10px;
+      }
+
+      .profile-key {
+        margin-bottom: 12px;
+      }
+
+      mat-form-field {
+        margin-top: 8px;
+      }
+    }
+  }
+}
+
+mat-dialog-actions {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
+    transition: background-color 0.3s, color 0.3s;
+
+    &.mat-button {
+      background-color: var(--color-background);
+      color: var(--color-primary);
+      border-radius: 4px;
+    }
+
+    &.mat-primary {
+      background-color: var(--color-primary);
+      color: var(--color-background);
+    }
+
+    &:hover {
+      background-color: var(--color-hover);
+      color: var(--color-background);
+    }
+
+    &.mat-warn {
+      background-color: var(--color-error);
+      color: var(--color-background);
+    }
+  }
+}
+
+mat-dialog-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
+  padding-bottom: 10px;
+}

@@ -7,6 +7,15 @@
   background-color: var(--color-background);
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+
 .product-card {
   width: 300px;
   background-color: #fff;
@@ -15,6 +24,14 @@
   overflow: hidden;
   display: flex;
   justify-content: space-between;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-hover-background, #f0f0f0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
 
   mat-card-header {
     color: var(--color-text-primary);
@@ -24,9 +41,27 @@
   .product-avatar {
     background-color: var(--color-primary);
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .product-id {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--color-background, #fff);
+      text-align: center;
+    }
   }
+
+
 
   mat-card-content {
     color: var(--color-text-primary);
@@ -39,6 +74,7 @@
     h4 {
       color: var(--color-secondary);
       margin-top: 8px;
+      font-size: 16px;
     }
 
     ul {
@@ -54,21 +90,30 @@
 
   mat-card-actions {
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     gap: 10px;
 
     button {
       font-size: 14px;
       display: block;
+      background-color: var(--color-background);
+      color: var(--color-text-primary);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px 16px;
+      transition: background-color 0.3s, color 0.3s;
 
-      &.mat-primary {
+      mat-icon {
+        margin-right: 8px;
+      }
+
+      &:hover {
         background-color: var(--color-primary);
         color: var(--color-background);
       }
 
-      &.mat-warn {
+      &.mat-warn:hover {
         background-color: var(--color-error);
-        color: var(--color-background);
       }
     }
   }
