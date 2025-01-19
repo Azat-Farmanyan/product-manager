@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [MatButtonModule, MatToolbarModule, MatIconModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  standalone: true,
 })
 export class HeaderComponent {
   constructor(private authService: AuthService, private router: Router) {}

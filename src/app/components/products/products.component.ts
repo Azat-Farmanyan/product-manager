@@ -16,6 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditProductDialogComponent } from '../../shared/components/EditProductDialog/EditProductDialog.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DeleteProductDialogComponent } from '../../shared/components/DeteleProductDialog/DeleteProductDialog.component';
 
 export interface Product {
   id: number;
@@ -46,7 +47,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   products: Product[] = []; // Store fetched products
   errorMessage: string = ''; // Store error message if any
   objectKeys = Object.keys;
-  private destroy$ = new Subject<void>(); // Триггер для завершения подписки
+  private destroy$ = new Subject<void>();
   isLoading = false;
 
   constructor(
@@ -123,8 +124,41 @@ export class ProductsComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDeleteProduct(productId: number): void {
-    console.log('Delete product with ID:', productId);
+  onDeleteProduct(product: Product): void {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent, {
+      width: '300px',
+      data: { ...product },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        this.productsService.deleteProduct(product.id).subscribe(
+          () => {
+            // Remove product from the list
+            this.products = this.products.filter((p) => p.id !== product.id);
+
+            // Show success notification
+            this.snackBar.open('Product deleted successfully!', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'right',
+            });
+
+            console.log(`Product with ID ${product.id} deleted successfully`);
+          },
+          (error) => {
+            console.error('Error deleting product:', error);
+
+            // Show error notification
+            this.snackBar.open('Failed to delete product.', 'Close', {
+              duration: 3000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'right',
+            });
+          }
+        );
+      }
+    });
   }
 
   ngOnDestroy(): void {

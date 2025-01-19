@@ -1,0 +1,55 @@
+mat-card {
+  background-color: #ffffff; // White background
+  border: 1px solid #e0e0e0; // Light gray border
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Subtle shadow
+  padding: 16px; // Padding inside the card
+  max-width: 400px; // Set a max width for consistency
+  margin: 0 auto; // Center horizontally
+
+  mat-card-title {
+    font-size: 1.25rem; // Slightly larger font size
+    font-weight: 600; // Bold text
+    color: #333333; // Darker text color
+    margin-bottom: 12px; // Space below the title
+  }
+
+  mat-card-content {
+    font-size: 1rem; // Default font size
+    color: #666666; // Subtle text color
+    line-height: 1.5; // Improve readability
+
+    strong {
+      color: #333333; // Emphasized text in darker color
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end; // Align buttons to the end
+    gap: 8px; // Add spacing between buttons
+
+    button {
+      font-size: 0.875rem; // Slightly smaller font for buttons
+      padding: 6px 16px; // Standard button padding
+    }
+
+    button[color='warn'] {
+      background-color: #d32f2f; // Red for delete button
+      color: #ffffff; // White text
+
+      &:hover {
+        background-color: #b71c1c; // Darker red on hover
+      }
+    }
+
+    button:not([color='warn']) {
+      background-color: #f5f5f5; // Light gray for cancel button
+      color: #333333; // Dark text
+
+      &:hover {
+        background-color: #e0e0e0; // Slightly darker gray on hover
+      }
+    }
+  }
+}
