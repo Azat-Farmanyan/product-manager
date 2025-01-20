@@ -6,25 +6,37 @@
   background-color: var(--color-primary);
   color: white;
   padding: 10px 20px;
+  height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 100%;
-  gap: 10px;
-}
 
-.logout-button {
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 
-  // background-color: var(--color-error);
-  color: var(--color-background);
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: auto;
+  }
 
-  &:hover {
-    background-color: var(--color-error);
+  .logout-button {
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    // background-color: var(--color-error);
     color: var(--color-background);
+    background-color: var(--color-primary);
+
+
+    &:hover {
+      background-color: var(--color-error);
+      color: var(--color-background);
+    }
   }
 }

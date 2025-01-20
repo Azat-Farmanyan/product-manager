@@ -1,7 +1,17 @@
 <mat-toolbar class="mat-toolbar">
   <span>Product Manager</span>
-  <button mat-raised-button class="logout-button" (click)="onLogout()">
-    <mat-icon>exit_to_app</mat-icon>
-    Logout
-  </button>
+  <div class="btns">
+    <button
+      mat-raised-button
+      class="create-product-button"
+      (click)="onCreate()"
+    >
+      <mat-icon>add_circle</mat-icon>
+      Create
+    </button>
+    <button mat-raised-button class="logout-button" (click)="onLogout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </div>
 </mat-toolbar>

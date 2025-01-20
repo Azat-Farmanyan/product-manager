@@ -63,20 +63,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   // Method to load products
   private loadProducts(): void {
     this.isLoading = true;
-    this.productsService
-      .fetchProducts()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(
-        (res) => {
-          this.products = res;
-          console.log(this.products);
-          this.isLoading = false;
-        },
-        (err) => {
-          this.errorMessage = 'Failed to load products. Please try again.';
-          this.isLoading = false;
-        }
-      );
+    // Подписываемся на изменения списка продуктов
+    this.productsService.products$.subscribe((products) => {
+      this.products = products;
+      this.isLoading = false;
+    });
+
+    // Инициализируем загрузку продуктов
+    this.productsService.refreshProducts();
   }
 
   onEditProduct(product: Product): void {

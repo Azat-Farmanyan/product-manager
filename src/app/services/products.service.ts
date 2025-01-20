@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Product } from '../components/products/products.component';
 
@@ -8,12 +8,22 @@ import { Product } from '../components/products/products.component';
   providedIn: 'root',
 })
 export class ProductsService {
+  private productsSubject = new BehaviorSubject<Product[]>([]);
+  products$ = this.productsSubject.asObservable(); // Observable для подписки в компонентах
+
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  // Fetch product list
-  fetchProducts(): Observable<Product[]> {
+  // Fetch product list and notify subscribers
+  fetchProducts(): void {
     const headers = this.getHeaders();
-    return this.http.get<Product[]>(this.authService.apiUrl, { headers });
+    this.http.get<Product[]>(this.authService.apiUrl, { headers }).subscribe(
+      (products) => {
+        this.productsSubject.next(products); // Обновляем данные в Subject
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+      }
+    );
   }
 
   // Create a new product
@@ -36,6 +46,11 @@ export class ProductsService {
     const headers = this.getHeaders();
     const url = `${this.authService.apiUrl}/${productId}`;
     return this.http.delete<void>(url, { headers });
+  }
+
+  // Notify components to refresh data
+  refreshProducts(): void {
+    this.fetchProducts(); // Загружаем данные и уведомляем подписчиков
   }
 
   // Helper method to get headers
