@@ -24,7 +24,11 @@ export interface Product {
   description: string;
   sku: string;
   cost: number;
-  profile: Record<string, any>;
+  profile: {
+    type: 'furniture' | 'equipment' | 'stationary' | 'part';
+    available?: boolean;
+    [key: string]: any;
+  };
 }
 
 @Component({
@@ -74,8 +78,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   onEditProduct(product: Product): void {
-    console.log('Edit product:', product);
-
     const dialogRef = this.dialog.open(EditProductDialogComponent, {
       width: '400px',
       data: { ...product },
@@ -83,8 +85,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((updatedProduct) => {
       if (updatedProduct) {
-        console.log('Saving updated product:', updatedProduct);
-
         this.productsService.editProduct(updatedProduct).subscribe(
           (savedProduct) => {
             // Update the product list with the saved product
@@ -101,11 +101,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
               verticalPosition: 'bottom',
               horizontalPosition: 'right',
             });
-            console.log('Product successfully updated:', savedProduct);
           },
           (error) => {
-            console.error('Error updating product:', error);
-
             // Show error notification
             this.snackBar.open('Failed to update product.', 'Close', {
               duration: 3000,
@@ -137,12 +134,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
               verticalPosition: 'bottom',
               horizontalPosition: 'right',
             });
-
-            console.log(`Product with ID ${product.id} deleted successfully`);
           },
           (error) => {
-            console.error('Error deleting product:', error);
-
             // Show error notification
             this.snackBar.open('Failed to delete product.', 'Close', {
               duration: 3000,

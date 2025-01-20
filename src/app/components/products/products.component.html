@@ -14,15 +14,20 @@
       <mat-card-subtitle>SKU: {{ product.sku }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p><strong>Description:</strong> {{ product.description }}</p>
-      <p><strong>Cost:</strong> {{ product.cost | currency }}</p>
+      <p>
+        <strong>Description:</strong>
+        {{ product.description.length > 0 ? product.description : "-" }}
+      </p>
+      <p><strong>Cost:</strong> {{ (product.cost | currency) ?? "-" }}</p>
       <p><strong>ID:</strong> {{ product.id }}</p>
       @if (product.profile) {
       <div>
         <h4>Custom Properties:</h4>
         <ul>
           @for ( key of objectKeys(product.profile); track key) {
-          <li>{{ key }}: {{ product.profile[key] }}</li>
+          <li>
+            {{ key }}: {{ product.profile[key] ? product.profile[key] : "-" }}
+          </li>
           }
         </ul>
       </div>

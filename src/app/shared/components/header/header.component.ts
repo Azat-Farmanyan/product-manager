@@ -60,8 +60,6 @@ export class HeaderComponent {
             });
 
             this.productsService.refreshProducts();
-
-            console.log('New product created:', createdProduct);
           },
           (error) => {
             console.error('Error creating product:', error);
