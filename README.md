@@ -1,26 +1,33 @@
-# ProductManager
+# Product Manager
 
 ## Project LINK
 
-https://product-manager-market.netlify.app/login
+[https://product-manager-market.netlify.app/login](https://product-manager-market.netlify.app/login)
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.4.
 
-## Development server
+## Overview
 
-Before starting the development server, make sure to install the dependencies by running:
+The project was built with the latest version of Angular (19.0.4). It includes modern tools and practices such as **Angular Material** for styling, **Routing**, **Guards**, and other necessary features to ensure a complete and functional application.
 
-```bash
-npm install
-```
+I deployed the project on **Netlify**, but due to the backend server using HTTP instead of HTTPS, the browser blocks requests to the server for security reasons.
 
-To start a local development server, run:
+To see the project in action locally, follow these steps:
 
-```bash
-ng serve
-```
+### Steps to Run Locally
 
-Once the server is running, open your browser and navigate to http://localhost:4200/. The application will automatically reload whenever you modify any of the source files.
+1. Clone the project repository.
+   ```bash
+   git clone https://github.com/Azat-Farmanyan/product-manager.git
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run project
+   ```bash
+   npm start
+   Once the server is running, open your browser and navigate to http://localhost:4200/. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
 
